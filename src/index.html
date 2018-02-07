@@ -17,33 +17,40 @@
         };
         firebase.initializeApp(config);
     </script>
-    <script src="app.js"></script>
+
 </head>
 <body>
+
 <input type="text" id="inp">
 <button onclick="addTodo()">Add todo</button>
+<ul id="todos"></ul>
 <hr>
-<h2>Fruits</h2>
+<h2>Fruit</h2>
 <input type="text" id="fruitInp">
- <button onclick="addFruits()">Fruit Name</button>
+<button onclick="addFruits()">Fruit Name</button>
+<ul id="fruit"></ul>
+
 <h2>Country</h2>
 <input type="text" id="conInp">
 <button onclick="addCountry()">County Name</button>
-<h2>Flowers</h2>
-<input type="text" id="flowInp">
-<button onclick="addFlowers()">Flower Name</button>
-<h2>Cities</h2>
+<ul id="country"></ul>
+<h2>City</h2>
 <input type="text" id="cityInp">
 <button onclick="addCities()">City Name</button>
+<ul id="city"></ul>
+<h2>Name</h2>
+<input type="text" id="nameInp">
+<button onclick="addNames()">My Name</button>
+
+<h2>Flower</h2>
+<input type="text" id="flowInp">
+<button onclick="addFlowers()">Flower Name</button>
 <h2>Vegetable</h2>
 <input type="text" id="vegInp">
 <button onclick="addVegetables()">Vegetable Name</button>
 <h2>Smart Phone</h2>
 <input type="text" id="phoneInp">
 <button onclick="addPhones()">Phone Name</button>
-<h2>Names</h2>
-<input type="text" id="nameInp">
-<button onclick="addNames()">My Name</button>
 <h2>Favourite Book</h2>
 <input type="text" id="bookInp">
 <button onclick="addBooks()">Book Name</button>
@@ -55,4 +62,5 @@
 <button onclick="addGames()">Game Name</button>
 
 </body>
+<script src="app.js"></script>
 </html>

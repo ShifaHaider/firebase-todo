@@ -1,5 +1,8 @@
 
 var db = firebase.firestore();
+
+getTodos();
+
 function addTodo(){
     var inp = document.getElementById('inp');
     console.log(inp.value);
@@ -9,6 +12,22 @@ function addTodo(){
     });
     inp.value = '';
 }
+function getTodos(){
+    var todo = document.getElementById('todos');
+    db.collection('todos').get().then(function(docCollection){
+        console.log(docCollection);
+        docCollection.forEach(function(doc){
+            var d = doc.data();
+            var li = document.createElement('li');
+            li.innerHTML = d.todo + ' ' + new Date(d.time).toLocaleString();
+            todo.appendChild(li);
+
+            console.log(doc.id);
+        })
+    })
+}
+
+
 function addFruits(){
     var fruitInp = document.getElementById('fruitInp');
     console.log(fruitInp.value);
@@ -18,6 +37,19 @@ function addFruits(){
     });
     fruitInp.value = '';
 }
+getFruits();
+function getFruits(){
+    var fruit = document.getElementById('fruit');
+    db.collection('fruits').get().then(function(collectFruits){
+        console.log(collectFruits);
+        collectFruits.forEach(function(doc){
+            var d = doc.data();
+            var li = document.createElement('li');
+            li.innerHTML = d.fruitName + ' ' + new Date(d.time).toLocaleString();
+            fruit.appendChild(li);
+        })
+    })
+}
 function addCountry(){
     var conInp = document.getElementById('conInp');
     db.collection('countries').add({
@@ -26,14 +58,18 @@ function addCountry(){
     });
     conInp.value = '';
 }
-function addFlowers(){
-    var flowInp = document.getElementById('flowInp');
-    console.log(flowInp.value);
-    db.collection('flowers').add({
-        flowerName : flowInp.value,
-        time : Date.now()
-    });
-    flowInp.value = '';
+getCountry();
+function getCountry(){
+    var country = document.getElementById('country');
+    db.collection('countries').get().then(function(collectConName){
+        console.log(collectConName);
+        collectConName.forEach(function(doc){
+            var d = doc.data();
+            var li = document.createElement('li');
+            li.innerHTML = d.countryName + ' ' + new Date(d.time).toLocaleString();
+            country.appendChild(li);
+        })
+    })
 }
 function addCities(){
     var cityInp = document.getElementById('cityInp');
@@ -44,6 +80,29 @@ function addCities(){
     });
     cityInp.value = '';
 }
+getCities();
+function getCities(){
+    var city = document.getElementById('city');
+    db.collection('cities').get().then(function(collectCityName){
+        console.log(collectCityName);
+        collectCityName.forEach(function(doc){
+            var d = doc.data();
+            var li = document.createElement('li');
+            li.innerHTML = d.cityName + ' ' + new Date(d.time).toLocaleString();
+            city.appendChild(li);
+        })
+    })
+}
+function addFlowers(){
+    var flowInp = document.getElementById('flowInp');
+    console.log(flowInp.value);
+    db.collection('flowers').add({
+        flowerName : flowInp.value,
+        time : Date.now()
+    });
+    flowInp.value = '';
+}
+
 function addVegetables(){
     var vegInp = document.getElementById('vegInp');
     console.log(vegInp.value);
